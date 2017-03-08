@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@import "./getdata/variables.scss";
+  #topbar {
+    width: 100%;
+    height: $top-h;
+    line-height: $top-h;
+    color: #666;
+  	background-color: #fff;
+  	border-bottom: 1px solid #f1f1f1;
+    font-size: 16px;
+  	position: relative;
+  }
+  #page-title{
+  	margin-right: 32%;
+  	height: 100%;
+  	position: relative;
+  	.title {
+  		text-align: center;
+  		font-size: 25px;
+  		font-weight: bold;
+  		color: $red;
+  		position: relative;
+
+  		a.back {
+        left: 30px;
+  			font-size: 20px;
+  			color: $color;
+  			position: absolute;
+  			padding-left: 20px;
+  		}
+  	}
+  }
+  .page-sunhead {
+  	position: absolute;
+  	right: 30px;
+  	top: 0;
+  	text-align: right;
+  	font-size: 12px;
+  	height: $top-h;
+  	line-height: $top-h;
+  	&>div{
+  		float: left;
+  	}
+  	.username {
+  		position: relative;
+  		a {
+  			color: blue;
+  			text-decoration: underline!important;
+  		}
+  		div.right-tip{
+  			position: absolute;
+  			top: 50px;
+  			right: 0px;
+  			border: 1px solid #333;
+  			box-shadow: 0 0 2px rgba(0,0,0,0.6);
+  			// display: none;
+  			z-index: 999999;
+  			padding: 4px;
+  			height: 28px;
+  			line-height: 20px;
+  		}
+  	}
+  }
