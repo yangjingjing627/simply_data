@@ -4,5 +4,10 @@
 //各个单页面的样式
 @import "./usage/module/sidebar.scss";
 @import "./usage/module/topbar.scss";
+
 @import "./usage/module/getdata/common.scss";
 @import "./usage/module/account/login.scss";
+
+@import "./usage/module/getdata/province/province.scss";
+
+@import "./usage/module/getdata/recent/recent.scss";

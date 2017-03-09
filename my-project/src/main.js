@@ -6,7 +6,9 @@ import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
+// import echarts from 'echarts'
 import './style/app.scss'
+import './script/app.js'
 
 Vue.use(VueResource)
 Vue.use(ElementUI)
