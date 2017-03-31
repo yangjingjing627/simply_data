@@ -1,7 +1,7 @@
 <template>
   <div id="sales" class="right-side">
     <div class="recent">
-      <div class="recent-title">近七天订单哪数量</div>
+      <div class="recent-title">{{ formName }}</div>
       <div class="order-q-left">
         <div id="sales-q"></div>
         <div class="order-q-sum">
@@ -29,31 +29,31 @@
 </template>
 <script>
 var echarts = require('echarts')
+// import jquery from 'jquery'
 import API from '../../store/api.js'
 export default {
   name: 'sales',
   data () {
     return {
-      todos: [
-        { text: 'first lesson', age: '20岁' },
-        { text: 'second lesson', age: '20岁' },
-        { text: 'third lesson', age: '20岁' }
-      ]
+      salesCount: [],
+      salesAmount: [],
+      dataOne: {},
+      dataTwo: {},
+      formName: ''
     }
   },
-  mounted: function () {
-    // var self = this
+  created () {
+    // do something after creating vue instance
     this.billCount()
     this.billAmount()
-    // this.circle(document.getElementById('sales-q'), self.billCount)
-    // this.circle(document.getElementById('sales-p'), self.billAmount)
+  },
+  mounted: function () {
   },
   methods: {
     billCount () {
       var self = this
       self.$http.get(API.billCount, {params: {}}).then((res) => {
         self.dataOne = res.data.data
-        console.log(JSON.stringify(res.data.data) + '-----p')
         self.title = self.dataOne.formName
         for (var i = 0; i < self.dataOne.titles.length; i++) {
           var str = {}
@@ -61,6 +61,7 @@ export default {
           str.data = self.dataOne.charts[0].data[i]
           self.salesCount.push(str)
         }
+        this.circle(document.getElementById('sales-q'), self.dataOne)
       })
     },
     billAmount () {
@@ -73,28 +74,29 @@ export default {
           str2.data = self.dataTwo.charts[0].data[i]
           self.salesAmount.push(str2)
         }
+        this.circle(document.getElementById('sales-p'), self.dataTwo)
       })
     },
     circle (opt, data) {
       var self = this
       var myChart = echarts.init(opt)
       self.data = data
-      self.formName = data.chartName
+      self.formName = data.formName
+      self.chartName = data.chartName
       var xdata = self.data.titles
-      // var seriesData = []
-      // var legendData = []
-      console.log(self.data.charts)
-      // for (var i = 0; i < self.data.charts.length; i++) {
-      //   var seriesList = {}
-      //   legendData.push(self.data.charts[i].name)
-      //   seriesList.name = self.data.charts[i].name
-      //   seriesList.type = self.data.charts[i].type
-      //   seriesList.data = self.data.charts[i].data
-      //   seriesData.push(seriesList)
-      // }
+      var seriesData = []
+      var legendData = []
+      for (var i = 0; i < self.data.charts.length; i++) {
+        var seriesList = {}
+        legendData.push(self.data.charts[i].name)
+        seriesList.name = self.data.charts[i].name
+        seriesList.type = self.data.charts[i].type
+        seriesList.data = self.data.charts[i].data
+        seriesData.push(seriesList)
+      }
       var option = {
         title: {
-          // text: self.formName,
+          text: self.chartName,
           x: 'center',
           textStyle: {
             fontSize: 18,
@@ -104,8 +106,8 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'  // 默认为直线，可选为：'line' | 'shadow'
           }
         },
         grid: {
@@ -126,8 +128,8 @@ export default {
           {
             type: 'value'
           }
-        ]
-        // series: seriesData
+        ],
+        series: seriesData
       }
       myChart.setOption(option)
     }

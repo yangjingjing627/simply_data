@@ -5,6 +5,7 @@ import Login from '../script/views/account/login.vue'
 import Province from '../script/views/province.vue'
 import Sales from '../script/views/sales.vue'
 import Orders from '../script/views/orders.vue'
+import Exe from '../script/views/exe.vue'
 
 Vue.use(Router)
 
@@ -18,7 +19,8 @@ const router = new Router({
         { path: '/login', component: Login },
         { path: '/province', component: Province },
         { path: '/sales', component: Sales },
-        { path: '/orders', component: Orders }
+        { path: '/orders', component: Orders },
+        { path: '/exe', component: Exe }
       ]
     }
   ]

@@ -1,55 +1,111 @@
 <template>
   <div id="province" class="right-side">
-    省市区各地数据查询列表
     <div id="provinceChart">
 
+    </div>
+    <div class="recent-title">{{ formName }}</div>
+    <div class="order-q-sum province">
+      <ul class="top-goods-list prov">
+        <li v-for="item in provinceData">
+            <span>{{ item.name }}</span>
+        </li>
+      </ul>
+      <ul class="top-goods-list prov">
+        <li v-for="item in provinceData">
+            <span>{{ item.data }}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 <script>
 var echarts = require('echarts')
+// import jquery from 'jquery'
 import API from '../../store/api.js'
 export default {
   name: 'province',
   data () {
     return {
-      chart: 'charts图'
+      province: {},
+      arr: [],
+      provinceData: [],
+      formName: ''
     }
   },
+  created () {
+    // do something after creating vue instance
+    this.provinceChart()
+  },
   mounted: function () {
-    this.circle(document.getElementById('provinceChart'))
-    this.getProvince()
   },
   methods: {
-    getProvince () {
+    provinceChart () {
       var self = this
       self.$http.get(API.province, {params: {}}).then((res) => {
+        self.province = res.data.data
+        for (var i = 0; i < self.province.titles.length; i++) {
+          var str2 = {}
+          str2.name = self.province.titles[i]
+          self.provinceData.push(str2)
+        }
+        for (var m = 0; m < self.province.charts.length; i++) {
+          var str4 = {}
+          for (var j = 0; j < self.province.charts[m].length; j++) {
+            var str3 = {}
+            var arr = []
+            str3.data = self.province.charts[m].data[j]
+            arr.push(str3)
+          }
+          self.provinceData.push(str4)
+        }
+        console.log(JSON.stringify(self.provinceData) + '----self.provinceData----')
+        this.circle(document.getElementById('provinceChart'), self.province)
       })
     },
-    circle (opt) {
+    circle (opt, data) {
+      var self = this
       var myChart = echarts.init(opt)
-      // 绘制图表
+      self.data = data
+      self.formName = data.formName
+      var xdata = self.data.titles
+      var seriesData = []
+      var legendData = []
+      for (var i = 0; i < self.data.charts.length; i++) {
+        var seriesList = {}
+        legendData.push(self.data.charts[i].name)
+        seriesList.name = self.data.charts[i].name
+        seriesList.type = self.data.charts[i].type
+        seriesList.data = self.data.charts[i].data
+        seriesData.push(seriesList)
+      }
       var option = {
-        color: ['#3398DB'],
+        title: {
+          // text: self.formName,
+          x: 'center',
+          textStyle: {
+            fontSize: 12,
+            fontWeight: 'bolder',
+            color: '#333'
+          }
+        },
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'  // 默认为直线，可选为：'line' | 'shadow'
           }
         },
         grid: {
-          left: '3%',
-          right: '4%',
+          // left: '3%',
+          // right: '4%',
+          left: '0',
+          right: '0',
           bottom: '3%',
           containLabel: true
         },
         xAxis: [
           {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            axisTick: {
-              alignWithLabel: true
-            }
+            data: xdata
           }
         ],
         yAxis: [
@@ -57,14 +113,7 @@ export default {
             type: 'value'
           }
         ],
-        series: [
-          {
-            name: '直接访问',
-            type: 'bar',
-            barWidth: '60%',
-            data: [10, 52, 200, 334, 390, 330, 220]
-          }
-        ]
+        series: seriesData
       }
       myChart.setOption(option)
     }

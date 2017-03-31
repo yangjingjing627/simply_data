@@ -1,7 +1,21 @@
 @charset "UTF-8";
 #province {
   #provinceChart {
-    width: 50%;
-    height: 50%;
+    margin: 0 auto;
+    width: 80%;
+    height: 40%;
+  }
+  .province {
+    margin: 0 auto;
+    width: 80%;
+    ul.prov {
+      height: 50px;
+      li {
+        height: 100%;
+        span {
+          height: 100%;
+        }
+      }
+    }
   }
 }
