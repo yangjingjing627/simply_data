@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import getInfo from '../es6/main'
+import getInfo from '../es6/main.js'
 export default {
   name: 'exe',
   data () {
