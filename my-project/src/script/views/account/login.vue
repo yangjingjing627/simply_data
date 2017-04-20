@@ -13,7 +13,7 @@
   		</form>
   		<div class="warning" id="login-warning" style="display:none">
   			<h2>提示</h2>
-  			<p>账号或密码错误。如果使用员工账号登录，请确保该收银机已绑 定至账号所属店铺。修改绑定请用店主账号登录并在“店铺资料” 处绑定。</p>
+  			<p>账号或密码错误。如果使用员工账号登录，请确保该收银机已绑定至账号所属店铺。修改绑定请用店主账号登录并在“店铺资料” 处绑定。</p>
   			<a class="red-box">知道了</a>
   		</div>
   	</div>
@@ -30,7 +30,7 @@ export default {
   methods: {
     login () {
       var self = this
-      var url = '/province'
+      var url = '/sales'
       self.$router.push(url)
     }
   }

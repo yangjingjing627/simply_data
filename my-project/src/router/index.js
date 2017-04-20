@@ -20,6 +20,11 @@ const router = new Router({
         { path: '/province', component: Province },
         { path: '/sales', component: Sales },
         { path: '/orders', component: Orders },
+
+        { path: '/province/exe', component: Exe },
+        { path: '/sales/exe', component: Exe },
+        { path: '/orders/exe', component: Exe },
+
         { path: '/exe', component: Exe }
       ]
     }

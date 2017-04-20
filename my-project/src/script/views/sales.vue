@@ -22,6 +22,7 @@
               <span class="count-data">{{ value.data }}</span>
           </li>
         </ul>
+        <p id='path'></p>
         </div>
       </div>
     </div>
@@ -48,8 +49,12 @@ export default {
     this.billAmount()
   },
   mounted: function () {
+    this.getPathname()
   },
   methods: {
+    getPathname () {
+      document.getElementById('path').innerHTML = window.location.pathname
+    },
     billCount () {
       var self = this
       self.$http.get(API.billCount, {params: {}}).then((res) => {
