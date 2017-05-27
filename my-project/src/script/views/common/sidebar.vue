@@ -3,12 +3,7 @@
     <div class="side-menu">
       <ul>
         <li v-for="item,index in list" :class="{active: item.style === toPath}">
-          <div>
-            <h4>{{ item.name }}</h4>
-            <div class="tags">
-              <span v-for="tag in item.tags"><router-link :to="tag.url" >{{ tag.tagname }}</router-link></span>
-            </div>
-          </div>
+          <router-link :to="item.url" >{{ item.name }}</router-link>
         </li>
       </ul>
       <router-view></router-view>
@@ -23,116 +18,40 @@ export default {
     return {
       toPath: '',
       list: [{
-        name: '我是卖家',
-        style: '',
-        url: '/',
+        name: '本周',
+        style: 'province',
+        url: '/province',
         active: true,
         show: false,
         id: 1,
         tags: []
-      }, {
-        name: '商品管理',
-        style: 'province',
-        url: '/province',
-        active: false,
+      },
+      {
+        name: '今日订单',
+        style: 'orders',
+        url: '/orders',
+        active: true,
         show: false,
         id: 2,
-        tags: [{
-          tagname: '我要供货',
-          url: '/province/exe',
-          show: false,
-          id: 3
-        }, {
-          tagname: '我的供货',
-          url: '/province/exe',
-          show: false,
-          id: 4
-        }, {
-          tagname: '分类标签',
-          url: '/province/exe',
-          show: false,
-          id: 22
-        }]
-      }, {
-        name: '交易管理',
+        tags: []
+      },
+      {
+        name: '今日结算单',
         style: 'sales',
         url: '/sales',
-        active: false,
+        active: true,
         show: false,
-        id: 5,
-        tags: [{
-          tagname: '订货管理',
-          url: '/sales/exe',
-          show: false,
-          id: 6
-        }, {
-          tagname: '退货管理',
-          url: '/sales/exe',
-          show: false,
-          id: 7
-        }, {
-          tagname: '退款管理',
-          url: '/sales/exe',
-          show: false,
-          id: 8
-        }, {
-          tagname: '已售商品',
-          url: '/sales/exe',
-          show: false,
-          id: 9
-        }
-        // , {
-        //   tagname: '代客下单',
-        //   url: '/deal/helporder',
-        //   show: false,
-        //   id: 10
-        // }
-        ]}, {
-          name: '我的钱包',
-          style: 'orders',
-          url: '/orders',
-          active: false,
-          show: false,
-          id: 11,
-          tags: [{
-            tagname: '收支查询',
-            url: '/orders/exe',
-            show: false,
-            id: 12
-          }, {
-            tagname: '账户余额',
-            url: '/orders/exe',
-            id: 13
-          }, {
-            tagname: '机构扣点',
-            url: '/orders/exe',
-            show: false,
-            id: 21
-          }]
-        },
+        id: 3,
+        tags: []
+      },
       {
-        name: '我的云采',
+        name: '统计数据',
         style: 'exe',
         url: '/exe',
-        active: false,
+        active: true,
         show: false,
-        id: 17,
-        tags: [{
-          tagname: '主体信息',
-          url: '/exe/exe',
-          show: false,
-          id: 18
-        }, {
-          tagname: '账号安全',
-          url: '/exe/exe',
-          show: false,
-          id: 19
-        }, {
-          tagname: '子账号',
-          url: '/exe/exe',
-          show: false,
-          id: 20
-        }]
+        id: 4,
+        tags: []
       }],
       type: '',
       array: [ 1.2, 4, 5, 6 ]

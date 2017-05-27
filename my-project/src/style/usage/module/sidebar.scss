@@ -19,17 +19,18 @@
             width: 100%;
             text-align: center;
             height: 100px;
-            padding-top: 20px;
             color: #fff;
             position: relative;
             overflow: visible;
             background-color: #666;
+            border: 1px solid #ccc;
             a {
                 color: #fff;
                 text-decoration: none;
                 display: block;
                 height: 100%;
                 width: 100%;
+                line-height: 100px;
                 .menu-title {
                   height: 100%;
                   width: 100%;

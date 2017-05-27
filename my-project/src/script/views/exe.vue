@@ -1,15 +1,24 @@
 <template>
   <div id="exe" class="right-side">
-    <input type="button" name="name" value="forOf" @click="forOf">
-    <input type="button" name="name" value="codeAt" @click="codeAt">
-    <input type="button" name="name" value="letjson" @click="letjson">
-    <input type="button" name="name" value="letstring" @click="letstring">
-    <input type="button" name="name" value="super" @click="getsuper">
-    <input type="button" name="name" value="getclass" @click="getclass">
-    <input type="button" name="name" value="getPerson" @click="getPerson">
-    <input type="button" name="name" value="getset" @click="getset">
-    <input type="button" name="name" value="getmap" @click="getmap">
-    <input type="button" name="name" value="model" @click="model">
+    <div class="">
+      <input type="button" name="name" value="forOf" @click="forOf">
+      <input type="button" name="name" value="codeAt" @click="codeAt">
+      <input type="button" name="name" value="letjson" @click="letjson">
+      <input type="button" name="name" value="letstring" @click="letstring">
+      <input type="button" name="name" value="super" @click="getsuper">
+      <input type="button" name="name" value="getclass" @click="getclass">
+      <input type="button" name="name" value="getPerson" @click="getPerson">
+      <input type="button" name="name" value="getset" @click="getset">
+      <input type="button" name="name" value="getmap" @click="getmap">
+      <input type="button" name="name" value="model" @click="model">
+    </div>
+    <div class="">
+      <router-link to="/exe/ele" >Element-ui</router-link>
+    </div>
+    <div class="vuexEx">
+      <router-link to="/exe/vuexEx" >Vuex</router-link>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
