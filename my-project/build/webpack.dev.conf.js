@@ -7,8 +7,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 // import global from './webpack.global'
 // import api from '../src/store/api'
+// import constant from '../src/store/constant'
+//
+// const headerHttp = global.global_HTTP_DEV
 
-// const headerHttp =
+// for (var i in api) {
+//   api[i] = headerHttp + '/' + api[i]
+// }
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
@@ -24,6 +29,8 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env
+      // API: JSON.stringify(api),
+      // CONSTANT: JSON.stringify(constant)
     }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),
