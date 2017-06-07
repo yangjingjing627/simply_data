@@ -1,6 +1,6 @@
 <template>
   <div id="side-bar">
-    <div class="side-menu">
+    <div class="side-menu" id="sideMenu">
       <ul>
         <li v-for="item,index in list" :class="{active: item.style === toPath}">
           <router-link :to="item.url" >{{ item.name }}</router-link>
