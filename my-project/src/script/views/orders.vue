@@ -21,6 +21,7 @@
                 <span class="count-data">{{ value.name }}</span>
                 <span class="count-data">{{ value.data }}</span>
                 <span class="count-data">新增fff</span>
+                <span class="count-data">新增--yang--分支</span>
             </li>
           </ul>
         </div>
