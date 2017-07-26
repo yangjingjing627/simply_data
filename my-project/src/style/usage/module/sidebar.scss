@@ -110,16 +110,16 @@
                 font-weight: 300;
             }
         }
-        &>li:hover {
-            background: #333;
-            color: white;
-            span {
-                display: block;
-                color: #fff;
-            }
-        }
-        &>li.active {
-            background: #333;
-        }
+        // &>li:hover {
+        //     background: #333;
+        //     color: white;
+        //     span {
+        //         display: block;
+        //         color: #fff;
+        //     }
+        // }
+        // &>li.active {
+        //     background: #333;
+        // }
     }
 }

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#vueEx {
+  background-color: #eee;
+
+  ul {
+    li {
+      background-color: #eee;
+      color: #000;
+      height: 200px;
+
+      div {
+        &:first-child {
+          text-align: left;
+        }
+
+        &:not(first-child) {
+          width: 300px;
+          height: 20px;
+          margin: 10px auto;
+
+          span {
+            display: block;
+            width: 100px;
+            height: 20px;
+            float: left;
+
+            &.list-radio {
+              margin: 0 30px;
+              width: 40px;
+              border: 1px solid #333;
+              border-radius: 10px;
+              // background: url("../assets/slect.png") no-repeat center center;
+              // background-size: contain;
+            }
+
+            &.list-sel {
+              background: url("../assets/disc.png") no-repeat right center;
+              background-size: contain;
+            }
+
+            &.list-lock {}
+          }
+        }
+      }
+    }
+  }
+}
